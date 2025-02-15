@@ -1,9 +1,9 @@
 import React from 'react'
 import { data, Link, useParams } from 'react-router-dom'
-import { useFetch } from '../hooks/useFetch'
-import ENVIROMENT from '../utils/constants/enviroment'
-import { getAuthenticatedHeaders } from '../fetching/customHeaders'
-import useForm from '../hooks/useForm'
+import { useFetch } from '../../hooks/useFetch'
+import ENVIROMENT from '../../utils/constants/enviroment'
+import { getAuthenticatedHeaders } from '../../fetching/customHeaders'
+import useForm from '../../hooks/useForm'
 
 const WorkspaceScreen = () => {
     const { workspace_id, channel_id } = useParams()

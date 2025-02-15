@@ -1,5 +1,5 @@
 import React from 'react'
-import RequestEmailForm from '../Components/RequestEmailForm'
+import RequestEmailForm from '../../Components/RequestEmailForm/RequestEmailForm'
 
 const ErrorScreen = () => {
     const url = new URLSearchParams(window.location.search)

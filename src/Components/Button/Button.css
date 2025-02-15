@@ -1,0 +1,167 @@
+button {
+    font-family: var(--font-1);
+    font-weight: 500;
+    font-style: var(--font-1-style-1);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-create {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    color: var(--color-1);
+    background-color: var(--color-5);
+    border: 3px double var(--color-3);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.btn-create:hover {
+    transform: scale(1.03);
+}
+
+.btn-enter {
+    padding: 10px 15px;
+    background-color: var(--color-6);
+    color: var(--color-2);
+    border-radius: 5px;
+}
+
+.btn-enter:hover {
+    background-color: var(--color-1);
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #4CAF50;
+    font-size: 14px;
+    background-color: var(--color-2);
+    color: #4CAF50;
+}
+
+.btn-submit:hover {
+    background-color: #4CAF50;
+    color: var(--color-2);
+}
+
+.btn-danger {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #f44336;
+    font-size: 14px;
+    background-color: var(--color-2);
+    color: #f44336;
+}
+
+.btn-danger:hover {
+    background-color: #f44336;
+    color: var(--color-2);
+}
+
+.btn-exit {
+    width: 120px;
+    padding: 10px 15px;
+    background-color: var(--color-6);
+    color: var(--color-2);
+    border-radius: 5px;
+}
+
+.btn-exit:hover {
+    background-color: var(--color-5);
+    color: var(--color-1);
+}
+
+.btn-send {
+    background-color: var(--color-6);
+    border-radius: 4px;
+    color: var(--color-2);
+    height: 40px;
+    padding: 0 20px;
+}
+
+.btn-send:hover {
+    background-color: var(--color-1);
+}
+
+.btn-navbar-auth {
+    padding: 10px 15px;
+    background-color: var(--color-5);
+    color: var(--color-6);
+    border-radius: 5px;
+}
+
+.btn-navbar-auth:hover {
+    background-color: var(--color-2);
+}
+
+.btn-main-auth {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--color-6);
+    color: var(--color-2);
+    border-radius: 5px;
+}
+
+.btn-main-auth:hover {
+    background-color: var(--color-3);
+}
+
+.btn-main-auth:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 600px) {
+
+    .btn-create {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 515px) {
+
+    .btn-exit {
+        width: 90px;
+        padding: 10px 15px;
+    }
+
+}
+
+@media screen and (max-width: 485px) {
+
+    .btn-enter {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .btn-submit,
+    .btn-danger {
+        padding: 8px 18px;
+    }
+}
+
+@media screen and (max-width: 365px) {
+
+    .btn-create {
+        width: 250px;
+        font-size: 13px;
+    }
+
+    .btn-enter {
+        padding: 7px;
+        font-size: 9px;
+    }
+
+    .btn-submit,
+    .btn-danger {
+        padding: 4px 14px;
+        font-size: 11px;
+    }
+}

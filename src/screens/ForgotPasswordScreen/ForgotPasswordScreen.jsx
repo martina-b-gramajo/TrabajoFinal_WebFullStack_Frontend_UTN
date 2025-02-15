@@ -1,6 +1,6 @@
 import React from 'react'
-import useForm from '../hooks/useForm'
-import ENVIROMENT from '../utils/constants/enviroment'
+import useForm from '../../hooks/useForm'
+import ENVIROMENT from '../../utils/constants/enviroment'
 
 const ForgotPasswordScreen = () => {
     const { form_state, handleChangeInput } = useForm({ email: '' })

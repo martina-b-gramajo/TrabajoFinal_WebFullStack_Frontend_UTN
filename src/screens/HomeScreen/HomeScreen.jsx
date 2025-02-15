@@ -1,7 +1,7 @@
 import React from 'react'
-import ENVIROMENT from '../utils/constants/enviroment'
-import { getAuthenticatedHeaders } from '../fetching/customHeaders'
-import { useFetch } from '../hooks/useFetch'
+import ENVIROMENT from '../../utils/constants/enviroment'
+import { getAuthenticatedHeaders } from '../../fetching/customHeaders'
+import { useFetch } from '../../hooks/useFetch'
 import { Link } from 'react-router-dom'
 
 const HomeScreen = () => {

@@ -1,16 +1,16 @@
 import React from 'react'
 import ENVIROMENT from './utils/constants/enviroment'
 import { Route, Routes } from 'react-router-dom'
-import RegisterScreen from './screens/RegisterScreen'
-import LoginScreen from './screens/LoginScreen'
-import ErrorScreen from './screens/ErrorScreen'
-import ForgotPasswordScreen from './screens/ForgotPasswordScreen'
-import ResetPasswordScreen from './screens/ResetPasswordScreen'
+import RegisterScreen from './screens/RegisterScreen/RegisterScreen'
+import LoginScreen from './screens/LoginScreen/LoginScreen'
+import ErrorScreen from './screens/ErrorScreen/ErrorScreen'
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen/ForgotPasswordScreen'
+import ResetPasswordScreen from './screens/ResetPasswordScreen/ResetPasswordScreen'
 import './app.css'
-import ProtectedRoute from './Components/ProtectedRoute'
-import HomeScreen from './screens/HomeScreen'
-import CreateWorkspaceScreen from './screens/CreateWorkspaceScreen'
-import WorkspaceScreen from './screens/WorkspaceScreen'
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
+import HomeScreen from './screens/HomeScreen/HomeScreen'
+import CreateWorkspaceScreen from './screens/CreateWorkspaceScreen/CreateWorkspaceScreen'
+import WorkspaceScreen from './screens/WorkspaceScreen/WorkspaceScreen'
 
 const App = () => {
   return (
@@ -28,7 +28,6 @@ const App = () => {
           <Route path='/workspace/:workspace_id' element={<WorkspaceScreen />} />
           <Route path='/workspace/:workspace_id/:channel_id' element={<WorkspaceScreen />} />
         </Route>
-
       </Routes>
     </div>
   )

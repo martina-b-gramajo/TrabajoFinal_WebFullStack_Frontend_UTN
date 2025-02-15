@@ -1,8 +1,8 @@
 import React from 'react'
-import useForm from '../hooks/useForm'
-import { useFetch } from '../hooks/useFetch'
-import ENVIROMENT from '../utils/constants/enviroment'
-import { getAuthenticatedHeaders } from '../fetching/customHeaders'
+import useForm from '../../hooks/useForm'
+import { useFetch } from '../../hooks/useFetch'
+import ENVIROMENT from '../../utils/constants/enviroment'
+import { getAuthenticatedHeaders } from '../../fetching/customHeaders'
 import { useNavigate } from 'react-router-dom'
 
 const CreateWorkspaceScreen = () => {
