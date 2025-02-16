@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 const useForm = (form_initial_state) => {
-    //form_initial_state sea un objeto como este: {email: "", password:""}
     const [form_state, setFormState] = useState(form_initial_state)
 
     const handleChangeInput = (event) => {

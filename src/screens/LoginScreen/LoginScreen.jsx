@@ -6,6 +6,7 @@ import { AuthContext } from '../../Context/AuthContext'
 import LoginForm from '../../Components/LoginForm/LoginForm'
 import Navbar from '../../Components/Navbar/Navbar.jsx'
 import './LoginScreen.css'
+import { getAuthenticatedHeaders } from '../../fetching/customHeaders.js'
 
 const LoginScreen = () => {
     const { login } = useContext(AuthContext)
@@ -18,13 +19,11 @@ const LoginScreen = () => {
     }
 
     const handleSubmitForm = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
         try {
             const response = await fetch(ENVIROMENT.API_URL + '/api/auth/login', {
                 method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
+                headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_state)
             })
             const data = await response.json()
@@ -67,7 +66,3 @@ const LoginScreen = () => {
 }
 
 export default LoginScreen
-
-
-
-

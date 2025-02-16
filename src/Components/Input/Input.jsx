@@ -22,7 +22,7 @@ const Input = ({ label, name, type, placeholder, value, onChange }) => {
                 />
                 {type === "password" && value && (
                     <span className="password-toggle" onClick={togglePasswordVisibility}>
-                        {showPassword ? <i class="bi bi-eye-fill"></i> : <i class="bi bi-eye-slash-fill"></i> }
+                        {showPassword ? <i className="bi bi-eye-fill"></i> : <i className="bi bi-eye-slash-fill"></i> }
                     </span>
                 )}
             </div>

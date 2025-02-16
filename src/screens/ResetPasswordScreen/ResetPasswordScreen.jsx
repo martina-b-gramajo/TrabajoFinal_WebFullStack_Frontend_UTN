@@ -2,29 +2,28 @@ import React from 'react'
 import useForm from '../../hooks/useForm'
 import ENVIROMENT from '../../utils/constants/enviroment'
 import ResetPasswordForm from '../../Components/ResetPasswordForm/ResetPasswordForm'
+import { getAuthenticatedHeaders } from '../../fetching/customHeaders'
 
 const ResetPasswordScreen = () => {
-    const url = new URLSearchParams(window.location.search);
-    const reset_token = url.get('reset_token');
-    const { form_state, handleChangeInput } = useForm({ password: '' });
+    const url = new URLSearchParams(window.location.search)
+    const reset_token = url.get('reset_token')
+    const { form_state, handleChangeInput } = useForm({ password: '' })
 
     const handleSubmitResetPassword = async (e) => {
         try {
-            e.preventDefault();
+            e.preventDefault()
             const response = await fetch(`${ENVIROMENT.API_URL}/api/auth/reset-password?reset_token=${reset_token}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_state)
-            });
-            const data = await response.json();
-            console.log(data);
+            })
+            const data = await response.json()
+            console.log(data)
             if (data.ok) {
-                alert('Contraseña restablecida con éxito');
+                alert('Contraseña restablecida con éxito')
             }
         } catch (error) {
-            console.error(error);
+            console.error(error)
         }
     }
 
@@ -39,7 +38,7 @@ const ResetPasswordScreen = () => {
                 onSubmit={handleSubmitResetPassword}
                 onChange={handleChangeInput}
                 formState={form_state}
-                errors={{}} // Puedes manejar errores aquí si es necesario
+                errors={{}} 
                 links={links}
             />
         </div>

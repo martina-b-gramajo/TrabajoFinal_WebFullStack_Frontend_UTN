@@ -5,25 +5,24 @@ import ENVIROMENT from '../../utils/constants/enviroment'
 import RegisterForm from '../../Components/RegisterForm/RegisterForm'
 import Navbar from '../../Components/Navbar/Navbar'
 import './RegisterScreen.css'
+import { getAuthenticatedHeaders } from '../../fetching/customHeaders'
 
 const RegisterScreen = () => {
     const navigate = useNavigate()
     const { form_state, handleChangeInput } = useForm({ username: "", email: "", password: "" })
 
     const handleSubmitForm = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
         try {
             const res = await fetch(ENVIROMENT.API_URL + "/api/auth/register", {
                 method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_state)
             })
             const data = await res.json()
             console.log(data)
             if (data.ok) {
-                navigate('/login'); // Redirigir al login después del registro exitoso
+                navigate('/login')
             }
         } catch (error) {
             console.error("Error al crear usuario", error)
