@@ -9,7 +9,6 @@ import ResetPasswordScreen from './screens/ResetPasswordScreen/ResetPasswordScre
 import './app.css'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 import HomeScreen from './screens/HomeScreen/HomeScreen'
-import CreateWorkspaceScreen from './screens/CreateWorkspaceScreen/CreateWorkspaceScreen'
 import WorkspaceScreen from './screens/WorkspaceScreen/WorkspaceScreen'
 
 const App = () => {
@@ -24,7 +23,6 @@ const App = () => {
         <Route path='/reset-password' element={<ResetPasswordScreen />} />
         <Route element={<ProtectedRoute />} >
           <Route path='/home' element={<HomeScreen />} />
-          <Route path='/workspace/new' element={<CreateWorkspaceScreen />} />
           <Route path='/workspace/:workspace_id' element={<WorkspaceScreen />} />
           <Route path='/workspace/:workspace_id/:channel_id' element={<WorkspaceScreen />} />
         </Route>

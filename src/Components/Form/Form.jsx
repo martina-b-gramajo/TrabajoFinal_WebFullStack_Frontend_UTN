@@ -4,9 +4,9 @@ import Input from '../Input/Input'
 import './Form.css'
 import { Link } from 'react-router-dom'
 
-const Form = ({ title, fields, onSubmit, buttons, links }) => {
+const Form = ({ title, fields, onSubmit, buttons, links, variant }) => {
     return (
-        <form onSubmit={onSubmit} className='form'>
+        <form onSubmit={onSubmit} className={`form${variant ? `-${variant}` : ''}`}>
             <h1 className='title'>{title}</h1>
             {fields.map((field, index) => (
                 <div className='input-container' key={index}>
@@ -23,7 +23,7 @@ const Form = ({ title, fields, onSubmit, buttons, links }) => {
                     ))}
                 </div>
             ))}
-            <div className="button-container">
+            <div className='btns-container'>
                 {buttons.map((button, index) => (
                     <Button
                         key={index}
