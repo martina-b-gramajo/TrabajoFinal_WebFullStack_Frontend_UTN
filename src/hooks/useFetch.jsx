@@ -10,6 +10,7 @@ export const useFetch = (api_url, params, dependencies = []) => {
             const response = await fetch(api_url, params)
             const responseData = await response.json()
             setData(responseData)
+            
         }
         catch (error) {
             console.log(error)

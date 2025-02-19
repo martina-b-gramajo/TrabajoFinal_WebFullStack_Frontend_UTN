@@ -1,0 +1,34 @@
+.channel-item {
+    padding: 5px;
+    margin: 4px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.channel-item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.channel-item.active {
+    background-color: var(--color-5);
+}
+
+.channel-item:hover {
+    background-color: var(--color-5);
+}
+
+@media screen and (max-width: 600px) {
+
+    .channel-item a {
+        color: var(--color-2);
+    }
+
+    .channel-item.active {
+        background-color: var(--color-3);
+    }
+
+    .channel-item:hover {
+        background-color: var(--color-3);
+    }
+}

@@ -1,97 +1,58 @@
-import React from 'react'
-import { data, Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import ENVIROMENT from '../../utils/constants/enviroment'
 import { getAuthenticatedHeaders } from '../../fetching/customHeaders'
-import useForm from '../../hooks/useForm'
+import Button from '../../Components/Button/Button'
+import ChannelList from '../../Components/ChannelList/ChannelList'
+import ChatList from '../../Components/ChatList/ChatList'
+import './WorkspaceScreen.css'
 
 const WorkspaceScreen = () => {
     const { workspace_id, channel_id } = useParams()
     const {
         data: channels_data,
         error: channels_error,
-        loading: channels_loading
+        loading: channels_loading,
     } = useFetch(ENVIROMENT.API_URL + `/api/channel/${workspace_id}`, {
         method: "GET",
-        headers: getAuthenticatedHeaders()
+        headers: getAuthenticatedHeaders(),
     })
+
+    const { data: workspace_response, loading: workspace_loading } = useFetch(
+        ENVIROMENT.API_URL + '/api/workspace',
+        {
+            method: "GET",
+            headers: getAuthenticatedHeaders()
+        },
+    )
+
+    const currentChannel = channels_data?.data?.channels?.find(channel => channel._id === channel_id);
+    const channelName = currentChannel ? currentChannel.name : '';
+
+    if (channels_loading) return <h2>Cargando...</h2>;
+    if (channels_error) return <h2>Error: {channels_error.message}</h2>;
+
     return (
-        <div>
-            {
-                channels_loading
-                    ? <h2>Cargando</h2>
-                    : <ChannelsList channel_list={channels_data.data.channels} workspace_id={workspace_id} />
-            }
-            <div>
-                {
-                    channel_id
-                        ? <Channel workspace_id={workspace_id} channel_id={channel_id} />
-                        : <h2>Aun no has seleccionado ningun canal</h2>
-                }
+        <div className='workspace-container'>
+            <div className='upper-container'>
+                <h1>{workspace_response.data.workspaces.find(workspace => workspace._id == workspace_id)?.name || 'Workspace'}</h1>
+                <Link to='/home'>
+                    <Button label='SALIR' variant='exit' />
+                </Link>
             </div>
-        </div>
-    )
-}
-
-const ChannelsList = ({ channel_list, workspace_id }) => {
-    return (
-        <div style={{ display: 'flex', flexDirection: "column", gap: '8px' }}>
-            {
-                channel_list.map(channel => {
-                    return (
-                        <Link
-                            key={channel._id}
-                            to={`/workspace/${workspace_id}/${channel._id}`}
-                        >
-                            #{channel.name}
-                        </Link>
-                    )
-                })
-            }
-        </div>
-    )
-}
-
-const Channel = ({ workspace_id, channel_id }) => {
-    const {
-        data: channel_data,
-        loading: channel_loading,
-        error: channel_error
-    } = useFetch(ENVIROMENT.API_URL + `/api/channel/${workspace_id}/${channel_id}`, {
-        method: 'GET',
-        headers: getAuthenticatedHeaders()
-    })
-
-    const { form_state, handleChangeInput } = useForm({ content: "" })
-
-    const handleSubmitNewMessage = async (e) => {
-        e.preventDefault()
-        const response = await fetch(ENVIROMENT.API_URL + `/api/channel/${workspace_id}/${channel_id}/send-message`, {
-            method: 'POST',
-            headers: getAuthenticatedHeaders(),
-            body: JSON.stringify(form_state)
-        })
-        const responseData = await response.json()
-        console.log(responseData)
-    }
-    return (
-        <div>
-            {
-                channel_loading
-                    ? <h2>Cargando canal</h2>
-                    : channel_data.data.messages.map(message => {
-                        return (
-                            <div key={message._id}>
-                                <h4>Author: {message.sender.username}</h4>
-                                <p>{message.content}</p>
-                            </div>
-                        )
-                    })
-            }
-            <form onSubmit={handleSubmitNewMessage}>
-                <input placeholder='enviar mensaje' type='text' name='content' onChange={handleChangeInput} value={form_state.content} />
-                <button type='submit'>Enviar</button>
-            </form>
+            <div className='middle-container'>
+                <ChannelList
+                    channels={channels_data.data.channels}
+                    title={'Canales'}
+                    id_workspace={workspace_id}
+                />
+                <ChatList
+                    channel_name={channelName}
+                    id_workspace={workspace_id}
+                    id_channel={channel_id}
+                />
+            </div>
         </div>
     )
 }

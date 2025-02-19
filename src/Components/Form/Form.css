@@ -23,15 +23,15 @@
     color: var(--color-6);
 }
 
-.form--compact {
-    padding: 1rem;
-    gap: 12px;
+.form-compact {
     width: 100%;
-    max-width: 400px;
-}
+    padding: 0; 
+    gap: 10px;
+    background-color: transparent; 
+    display: flex; 
+    align-items: center; 
 
-.form--compact .title {
-    font-size: 22px;
+    
 }
 
 @media (max-width: 768px) {

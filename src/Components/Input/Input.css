@@ -8,7 +8,7 @@ label {
 }
 
 input {
-    margin-top: 5px;
+    margin-top: 8px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -19,6 +19,7 @@ input {
 
 .input-container {
     position: relative;
+    flex-grow: 1;
 }
 
 .password-toggle {
