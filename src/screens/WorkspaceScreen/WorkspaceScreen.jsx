@@ -10,6 +10,8 @@ import './WorkspaceScreen.css'
 
 const WorkspaceScreen = () => {
     const { workspace_id, channel_id } = useParams()
+    const [isOpen, setIsOpen] = useState(false)
+
     const {
         data: channels_data,
         error: channels_error,
@@ -27,8 +29,9 @@ const WorkspaceScreen = () => {
         },
     )
 
-    const currentChannel = channels_data?.data?.channels?.find(channel => channel._id === channel_id);
-    const channelName = currentChannel ? currentChannel.name : '';
+    const toggleMenu = () => {
+        setIsOpen(!isOpen)
+    }
 
     if (channels_loading) return <h2>Cargando...</h2>;
     if (channels_error) return <h2>Error: {channels_error.message}</h2>;
@@ -40,18 +43,26 @@ const WorkspaceScreen = () => {
                 <Link to='/home'>
                     <Button label='SALIR' variant='exit' />
                 </Link>
+                <div className={`burger-menu ${isOpen && 'open'}`} onClick={toggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
             <div className='middle-container'>
                 <ChannelList
                     channels={channels_data.data.channels}
                     title={'Canales'}
                     id_workspace={workspace_id}
+                    isOpen={isOpen}
                 />
-                <ChatList
-                    channel_name={channelName}
-                    id_workspace={workspace_id}
-                    id_channel={channel_id}
-                />
+                <div className={`chat-list-container ${isOpen ? 'hidden' : ''}`}>
+                    <ChatList
+                        channel_name={channels_data.data.name}
+                        id_workspace={workspace_id}
+                        id_channel={channel_id}
+                    />
+                </div>
             </div>
         </div>
     )

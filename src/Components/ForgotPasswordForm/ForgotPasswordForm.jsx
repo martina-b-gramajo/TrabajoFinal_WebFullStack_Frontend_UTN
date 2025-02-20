@@ -29,6 +29,7 @@ const ForgotPasswordForm = ({ onSubmit, onChange, formState, errors, links }) =>
             onSubmit={onSubmit}
             buttons={buttons}
             links={links}
+            variant='auth'
         />
     )
 }

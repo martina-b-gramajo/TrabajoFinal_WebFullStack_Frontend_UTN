@@ -36,3 +36,26 @@
 .home-container a:hover {
     color: var(--color-primary-dark);
 }
+
+@media screen and (max-width: 475px) {
+
+    .home-container h1 {
+        font-size: 22px;
+    }
+
+    .home-container h2 {
+        font-size: 15px;
+        padding-left: 10px;
+    }
+}
+
+@media screen and (max-width: 365px) {
+
+    .home-container h1 {
+        font-size: 20px;
+    }
+
+    .home-container h2 {
+        font-size: 15px;
+    }
+}

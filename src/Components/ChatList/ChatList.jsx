@@ -8,6 +8,7 @@ import Form from '../Form/Form'
 
 const ChatList = ({ channel_name, id_workspace, id_channel }) => {
     const [input, setInput] = useState('')
+    
     const {
         data: channel_data,
         loading: channel_loading,

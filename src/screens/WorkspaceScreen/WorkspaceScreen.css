@@ -33,28 +33,11 @@
     height: 100%;
 }
 
+.chat-list-container {
+    flex: 1;
+}
+
 @media screen and (max-width: 600px) {
-
-    .channels-burger-menu {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        transform: translateX(-100%);
-        transition: 0.3s ease all;
-    }
-
-    .channels-burger-menu .channels-list {
-        width: 100%;
-        height: 100vh;
-        background-color: var(--color-1);
-    }
-
-    .channels-burger-menu.open {
-        transform: translateX(0) !important;
-        padding: 20px;
-    }
-
     .burger-menu {
         display: flex;
         flex-direction: column;
@@ -72,35 +55,36 @@
         transition: all 0.2s linear;
     }
 
-    .burger-menu.open>span {
-        transform: rotate(45deg)translate(0px, 0px);
+    .burger-menu.open > span {
+        transform: rotate(45deg) translate(0px, 0px);
     }
 
-    .burger-menu.open>span:nth-child(2) {
+    .burger-menu.open > span:nth-child(2) {
         display: none;
     }
 
-    .burger-menu.open>span:nth-child(3) {
-        transform: rotate(-45deg)translate(-5px, 1px);
+    .burger-menu.open > span:nth-child(3) {
+        transform: rotate(-45deg) translate(-5px, 1px);
+    }
+
+    .chat-list-container.hidden {
+        display: none;
     }
 }
 
 @media screen and (max-width: 600px) {
-
     .upper-container h1 {
         font-size: 22px;
     }
 }
 
 @media screen and (max-width: 475px) {
-
     .upper-container h1 {
         font-size: 20px;
     }
 }
 
 @media screen and (max-width: 400px) {
-
     .upper-container h1 {
         font-size: 18px;
     }
