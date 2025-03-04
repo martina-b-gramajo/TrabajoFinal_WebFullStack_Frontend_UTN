@@ -28,20 +28,41 @@
 .navbar-buttons {
     display: flex;
     gap: 12px;
+    align-items: center;
 }
 
 .navbar-dropdown {
     position: relative;
-    display: inline-block;
 }
 
-.navbar-dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
+.navbar-burger-menu {
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.navbar-burger-menu span {
+    width: 30px;
+    height: 4px;
+    background: #ffffff; 
+    margin-bottom: 5px;
+    border-radius: 2px;
+    transform-origin: 5px 0px;
+    transition: all 0.2s linear;
+}
+
+.navbar-burger-menu.open > span {
+    transform: rotate(45deg) translate(0px, 0px);
+}
+
+.navbar-burger-menu.open > span:nth-child(2) {
+    display: none;
+}
+
+.navbar-burger-menu.open > span:nth-child(3) {
+    transform: rotate(-45deg) translate(-5px, 1px);
 }
 
 .navbar-dropdown-content {
@@ -49,8 +70,16 @@
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    right: 0; 
+    top: 50px; 
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.navbar-dropdown-content.open {
+    display: block; 
 }
 
 .navbar-dropdown-content button {
@@ -62,12 +91,9 @@
     background: none;
     width: 100%;
     text-align: left;
+    cursor: pointer;
 }
 
 .navbar-dropdown-content button:hover {
     background-color: #f1f1f1;
-}
-
-.navbar-dropdown:hover .navbar-dropdown-content {
-    display: block;
 }

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import useForm from '../../hooks/useForm'
 import ENVIROMENT from '../../utils/constants/enviroment'
 import { AuthContext } from '../../Context/AuthContext'
@@ -9,14 +9,30 @@ import './LoginScreen.css'
 import { getAuthenticatedHeaders } from '../../fetching/customHeaders.js'
 
 const LoginScreen = () => {
-    const { login } = useContext(AuthContext)
+    const { login, logout } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
     const { form_state, handleChangeInput } = useForm({ email: '', password: '' })
 
     const url = new URLSearchParams(window.location.search)
     if (url.get('verified')) {
         alert('Cuenta verificada')
     }
+
+    // Log out when the user reaches the login screen
+    useEffect(() => {
+        const handlePopState = () => {
+            if (location.pathname === '/login') {
+                logout()
+            }
+        }
+
+        window.addEventListener('popstate', handlePopState)
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState)
+        }
+    }, [logout, location.pathname])
 
     const handleSubmitForm = async (event) => {
         event.preventDefault()

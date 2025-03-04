@@ -17,9 +17,14 @@ input {
     height: 40px;
 }
 
+.input-wrapper {
+    width: 100%; 
+    flex-grow: 1; 
+}
+
 .input-container {
     position: relative;
-    flex-grow: 1;
+    flex-grow: 1; 
 }
 
 .password-toggle {

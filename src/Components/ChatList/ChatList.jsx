@@ -72,7 +72,7 @@ const ChatList = ({ channel_name, id_workspace, id_channel }) => {
                         key={message._id}
                         author={message.sender.username}
                         text={message.content}
-                        hour={new Date(message.createdAt).toLocaleTimeString()}
+                        hour={new Date(message.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     />
                 ))}
             </div>

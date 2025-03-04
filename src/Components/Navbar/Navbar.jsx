@@ -1,25 +1,26 @@
-import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import Button from '../Button/Button';
-import './Navbar.css';
+import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../Context/AuthContext'
+import './Navbar.css'
+import Button from '../Button/Button'
 
 const Navbar = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+    const navigate = useNavigate()
+    const { isAuthenticatedState, logout } = useContext(AuthContext)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const handleLogout = () => {
-        // Aquí puedes agregar la lógica para cerrar sesión
-        console.log('Cerrando sesión...');
-        navigate('/login');
-    }
+        logout()
+        navigate('/login')
+    };
 
     const handleProfile = () => {
-        // Aquí puedes agregar la lógica para redirigir al perfil
-        console.log('Redirigiendo al perfil...');
-        navigate('/profile');
+        navigate('/profile')
     };
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen)
+    }
 
     return (
         <nav className="navbar">
@@ -27,23 +28,35 @@ const Navbar = () => {
                 <p>Why Not Talk?</p>
             </div>
             <div className="navbar-buttons">
-                {isAuthPage ? (
-                    <>
-                        <Button label="Iniciar sesión" variant="navbar-auth" onClick={() => navigate('/login')} />
-                        <Button label="Registrarse" variant="navbar-auth" onClick={() => navigate('/register')} />
-                    </>
-                ) : (
+                {isAuthenticatedState ? (
                     <div className="navbar-dropdown">
-                        <button className="navbar-dropbtn">Menú</button>
-                        <div className="navbar-dropdown-content">
+                        <div className={`navbar-burger-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div className={`navbar-dropdown-content ${isMenuOpen ? 'open' : ''}`}>
                             <button onClick={handleProfile}>Ver perfil</button>
                             <button onClick={handleLogout}>Cerrar sesión</button>
                         </div>
                     </div>
+                ) : (
+                    <>
+                        <Button
+                            label="Iniciar sesión"
+                            variant="navbar-auth"
+                            onClick={() => navigate('/login')}
+                        />
+                        <Button
+                            label="Registrarse"
+                            variant="navbar-auth"
+                            onClick={() => navigate('/register')}
+                        />
+                    </>
                 )}
             </div>
         </nav>
-    );
-};
+    )
+}
 
-export default Navbar;
+export default Navbar

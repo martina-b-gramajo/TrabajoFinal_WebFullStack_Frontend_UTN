@@ -24,14 +24,21 @@
 }
 
 .form-compact {
-    width: 100%;
-    padding: 0; 
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 0;
     gap: 10px;
-    background-color: transparent; 
-    display: flex; 
-    align-items: center; 
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
 
-    
+.form-compact .input-wrapper {
+    flex: 1; /* El input ocupa todo el espacio disponible */
+}
+
+.form-compact .btns-container {
+    flex-shrink: 0; /* Evita que el botón se reduzca */
 }
 
 @media (max-width: 768px) {

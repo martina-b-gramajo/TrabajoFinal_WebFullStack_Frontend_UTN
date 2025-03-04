@@ -1,5 +1,4 @@
 import React from 'react'
-import ENVIROMENT from './utils/constants/enviroment'
 import { Route, Routes } from 'react-router-dom'
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen'
 import LoginScreen from './screens/LoginScreen/LoginScreen'

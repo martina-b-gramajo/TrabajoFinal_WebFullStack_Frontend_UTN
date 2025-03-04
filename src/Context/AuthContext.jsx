@@ -4,12 +4,19 @@ export const AuthContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
     const [isAuthenticatedState, setIsAuthenticatedState] = useState(Boolean(sessionStorage.getItem('access_token')))
+    
     const login = (access_token) => {
         sessionStorage.setItem('access_token', access_token)
         setIsAuthenticatedState(true)
     }
+
+    const logout = () => {
+        sessionStorage.removeItem('access_token')
+        setIsAuthenticatedState(false)
+    }
+
     return (
-        <AuthContext.Provider value={{ isAuthenticatedState, login }}>
+        <AuthContext.Provider value={{ isAuthenticatedState, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

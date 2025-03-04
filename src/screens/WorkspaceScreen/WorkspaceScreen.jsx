@@ -43,7 +43,7 @@ const WorkspaceScreen = () => {
                 <Link to='/home'>
                     <Button label='SALIR' variant='exit' />
                 </Link>
-                <div className={`burger-menu ${isOpen && 'open'}`} onClick={toggleMenu}>
+                <div className={`workspace-burger-menu ${isOpen && 'open'}`} onClick={toggleMenu}>
                     <span></span>
                     <span></span>
                     <span></span>

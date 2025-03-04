@@ -8,6 +8,7 @@ import './RegisterScreen.css'
 import { getAuthenticatedHeaders } from '../../fetching/customHeaders'
 
 const RegisterScreen = () => {
+    //const { login } = useContext(AuthContext)
     const navigate = useNavigate()
     const { form_state, handleChangeInput } = useForm({ username: "", email: "", password: "" })
 

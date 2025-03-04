@@ -22,7 +22,7 @@
     color: var(--color-2);
 }
 
-.burger-menu {
+.workspace-burger-menu {
     display: none;
 }
 
@@ -38,14 +38,14 @@
 }
 
 @media screen and (max-width: 600px) {
-    .burger-menu {
+    .workspace-burger-menu {
         display: flex;
         flex-direction: column;
         cursor: pointer;
         z-index: 8000;
     }
 
-    .burger-menu span {
+    .workspace-burger-menu span {
         width: 30px;
         height: 4px;
         background: var(--color-2);
@@ -55,15 +55,15 @@
         transition: all 0.2s linear;
     }
 
-    .burger-menu.open > span {
+    .workspace-burger-menu.open > span {
         transform: rotate(45deg) translate(0px, 0px);
     }
 
-    .burger-menu.open > span:nth-child(2) {
+    .workspace-burger-menu.open > span:nth-child(2) {
         display: none;
     }
 
-    .burger-menu.open > span:nth-child(3) {
+    .workspace-burger-menu.open > span:nth-child(3) {
         transform: rotate(-45deg) translate(-5px, 1px);
     }
 
